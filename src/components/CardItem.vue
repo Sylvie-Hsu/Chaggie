@@ -1,21 +1,27 @@
 <template>
-  <div class="card">
-    <div class="image">
-      <img src="https://semantic-ui.com/images/avatar2/large/matthew.png" />
-    </div>
+  <div class="ui card">
     <div class="content">
-      <div class="header">Matt Giampietro</div>
-      <div class="meta">
-        <a>Friends</a>
+      <!-- <i class="right floated share square icon"></i> -->
+      <div class="header"># {{this.item.title}}</div>
+      <div class="description">
+        <p>{{this.item.body}}</p>
       </div>
-      <div class="description">Matthew is an interior designer living in New York.</div>
     </div>
     <div class="extra content">
-      <span class="right floated">Joined in 2013</span>
-      <span>
-        <i class="user icon"></i>
-        75 Friends
+      <span class="left floated like">
+        <i class="like icon"></i>
+        Like
+      </span>
+      <span class="right floated paw">
+        <i class="paw icon"></i>
+        Dislike
       </span>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["item"]
+};
+</script>

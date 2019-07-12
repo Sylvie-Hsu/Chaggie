@@ -1,26 +1,6 @@
 <template>
-  <div id="cardlist">
-    <div class="ui link cards">
-      <div v-for="item in items" v-bind:key="item.id" class="card">
-        <div class="image">
-          <img src="https://semantic-ui.com/images/avatar2/large/matthew.png" />
-        </div>
-        <div class="content">
-          <div class="header">Matt Giampietro</div>
-          <div class="meta">
-            <a>Friends</a>
-          </div>
-          <div class="description">Matthew is an interior designer living in New York.</div>
-        </div>
-        <div class="extra content">
-          <span class="right floated">Joined in 2013</span>
-          <span>
-            <i class="user icon"></i>
-            75 Friends
-          </span>
-        </div>
-      </div>
-    </div>
+  <div id="cardlist" :style="{columnCount:columnCount }">
+    <card-item id="carditem" v-for="item in mocks" v-bind:key="item.id" :item="item"></card-item>
   </div>
 </template>
 
@@ -30,30 +10,209 @@ import carditem from "./CardItem";
 export default {
   data() {
     return {
-      items: []
+      windowSize: {
+        height: null,
+        width: null
+      },
+      columnCount: null,
+      items: [],
+      mocks: [
+        {
+          userId: 1,
+          id: 1,
+          title:
+            "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+          body:
+            "quia et suscipt t st suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expeduscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedsuscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expet suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expeddita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+        },
+        {
+          userId: 1,
+          id: 2,
+          title: "qui est esse",
+          body:
+            "est rerum tempore vt suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expeditae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blat suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expednditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+        },
+        {
+          userId: 1,
+          id: 3,
+          title: "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+          body:
+            "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
+        },
+        {
+          userId: 1,
+          id: 4,
+          title: "eum et est occaecati",
+          body:
+            "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commt suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit"
+        },
+        {
+          userId: 1,
+          id: 5,
+          title: "nesciunt quas odio",
+          body:
+            "repudiandae vt suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedt suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedt suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedeniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+        },
+        {
+          userId: 1,
+          id: 6,
+          title: "dolorem eum magni eos aperiam quia",
+          body:
+            "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo abt suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur exped reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae"
+        },
+        {
+          userId: 1,
+          id: 7,
+          title: "magnam facilis autem",
+          body:
+            "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut set suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedqui eos ea sed quas"
+        },
+        {
+          userId: 1,
+          id: 8,
+          title: "dolorem dolore est ipsam",
+          body:
+            "dignist suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedt suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedt suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedsimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae"
+        },
+        {
+          userId: 1,
+          id: 9,
+          title: "nesciunt iure omnis dolorem tempora et accusantium",
+          body:
+            "consectetur animi nesciunt iure dolore\nenim quia ad\nveniam autem ut quam aut nobis\net est aut quod aut provident voluptas autem voluptas"
+        },
+        {
+          userId: 1,
+          id: 10,
+          title: "optio molestias id quia eum",
+          body:
+            "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandaet suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur exped\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
+        },
+        {
+          userId: 2,
+          id: 11,
+          title: "et ea vero quia laudantium autem",
+          body:
+            "delectus ret suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expediciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum t suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedbeatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi"
+        },
+        {
+          userId: 2,
+          id: 12,
+          title: "in quibusdam tempore odit est dolorem",
+          body:
+            "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
+        },
+        {
+          userId: 2,
+          id: 13,
+          title: "dolorum ut in voluptas mollitia et saepe quo animi",
+          body:
+            "aut dicta possimus sint mollitia voluptas commodi quo doloremque\niste corrupti reiciendis voluptatem eius rerum\nsit cumque quod eligendi laborum minima\nperferendis recusandae assumenda consectetur porro architecto ipsum ipsam"
+        },
+        {
+          userId: 2,
+          id: 14,
+          title: "voluptatem eligendi optio",
+          body:
+            "fuga et accusamus dolorum perferendis illo voluptas\nnon doloremque neque facere\nad qui dolorum molestiae beatae\nsed aut voluptas totam sit illum"
+        },
+        {
+          userId: 2,
+          id: 15,
+          title: "eveniet quod temporibus",
+          body:
+            "reprehenderit quos placeat\nvelit minima officit suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expeda dolores impedit repudiandae molestiae nam\nvoluptas recusandae quis delectus\nofficiis harum fugiat vitae"
+        },
+        {
+          userId: 2,
+          id: 16,
+          title:
+            "sint suscipit perspiciatis velit dolorum rerum ipsa laboriosam odio",
+          body:
+            "suscipit nam nisi quo aperiam aut\nasperiores eos fugit maiores voluptatibus quia\nvoluptatem quis ullam qui in alias quia est\nconsequatur magni mollitia accusamus ea nisi voluptate dicta"
+        },
+        {
+          userId: 2,
+          id: 17,
+          title: "fugit voluptas sed molestias voluptatem provident",
+          body:
+            "eos voluptas et aut odit natus earum\naspernatur fuga molestiaet suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur exped ullam\ndeserunt ratione qui eos\nqui nihil ratione nemo velit ut aut id quo"
+        },
+        {
+          userId: 2,
+          id: 18,
+          title: "voluptate et itaque vero tempora molestiae",
+          body:
+            "eveniet quo quis\nlaborum totam consequatur non dolor\nut et est repudiandae\nest voluptatem vel debitis et magnam"
+        },
+        {
+          userId: 2,
+          id: 19,
+          title: "adipisci placeat illum aut reiciendis qui",
+          body:
+            "illum quis cupiditate provident sit magnam\nea sed aut omnis\nveniam maiores ullam consequatur atque\nadipisci quo iste expedita sit quos voluptas"
+        },
+        {
+          userId: 2,
+          id: 20,
+          title: "doloribus ad provident suscipit at",
+          body:
+            "qui consequuntur ducimus possimus quisquam t suscipit\nsuscipit recusandae conpit\nsuscipit recusandae consequuntur expedamet similique\nsuscipit porro ipsam amet\neos veritatis officiis exercitationem vel fugit aut necessitatibus totam\nomnis rerum consequatur expedita quidem cumque explicabo"
+        }
+      ]
     };
   },
   components: {
     "card-item": carditem
   },
   created() {
-    this.$http
-      .get("http://jsonplaceholder.typicode.com/posts")
-      .then(function(data) {
-        return data.body;
-      })
-      .then(function(data) {
-        var itemsArray = [];
-        for (let key in data) {
-          data[key].id = key;
-          itemsArray.push(data[key]);
-        }
-        this.items = itemsArray;
-        console.log(this.items);
-      });
+    this.getData();
+    this.renderColumns();
+    window.addEventListener("resize", this.renderColumns);
+  },
+  methods: {
+    getWindowSize() {
+      this.windowSize.height = window.innerHeight;
+      this.windowSize.width = window.innerWidth;
+      console.log(this.windowSize);
+    },
+    renderColumns() {
+      this.getWindowSize();
+
+      let cardWidth = 276;
+      let maxColumn = 4;
+      let columns = Math.floor((this.windowSize.width - 150) / cardWidth);
+      this.columnCount = columns > maxColumn ? maxColumn : columns;
+    },
+    getData() {
+      this.$http
+        .get("http://jsonplaceholder.typicode.com/posts")
+        .then(function(data) {
+          // return data.body;
+        })
+        .then(function(data) {
+          var itemsArray = [];
+          for (let key in data) {
+            data[key].id = key;
+            itemsArray.push(data[key]);
+          }
+          this.items = itemsArray;
+          console.log(this.items);
+        });
+    }
   }
 };
 </script>
 
 <style scoped>
+#cardlist {
+  column-gap: 0.5vw;
+  padding-top: 0.5vw;
+}
+#carditem {
+  position: relative;
+  width: 24vm;
+  margin-bottom: 1vm;
+  break-inside: avoid;
+}
 </style>
