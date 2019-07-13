@@ -24,9 +24,17 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.prompt {
-  width: 350px;
-  height: 36.5px;
+@media (min-width: 525px) {
+  .prompt {
+    width: 350px;
+    height: 36.5px;
+  }
+}
+@media (max-width: 280px) {
+  .prompt {
+    width: 200px;
+    height: 36.5px;
+  }
 }
 </style>
 

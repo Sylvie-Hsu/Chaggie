@@ -1,8 +1,10 @@
 <template>
-  <div class="ui card">
+  <div class="ui card fluid">
     <div class="content">
       <!-- <i class="right floated share square icon"></i> -->
-      <div class="header"># {{this.item.title}}</div>
+      <router-link v-bind:to="'/item/'+item.id" style="color:black;font-weight:bold">
+        <div class="header"># {{this.item.title}}</div>
+      </router-link>
       <div class="description">
         <p>{{this.item.body}}</p>
       </div>
