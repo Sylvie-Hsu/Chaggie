@@ -1,10 +1,14 @@
 <template>
   <div id="menubar" class="ui secondary menu">
     <router-link to="/" exact>
-      <a class="item">Home</a>
+      <a class="item">
+        <i class="large home icon"></i>
+      </a>
     </router-link>
     <router-link to="/post">
-      <a class="item">Post</a>
+      <a class="item">
+        <i class="large edit icon"></i>
+      </a>
     </router-link>
     <div class="right menu">
       <search-bar></search-bar>

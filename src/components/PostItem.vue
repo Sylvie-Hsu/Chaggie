@@ -30,13 +30,18 @@
               <textarea type="text" v-model.lazy.trim="item.content"></textarea>
             </div>
             <div class="field">
-              <label>标签</label>
+              <div class="ui right labeled left icon input">
+                <i class="tags icon"></i>
+                <input type="text" name="tag" placeholder="Enter tags" v-on:keyup.enter="addTag" />
+                <a class="ui tag label">标签</a>
+              </div>
+              <!-- <label>标签</label>
               <input
                 type="text"
                 name="tag"
                 placeholder="Tags (Press enter)"
                 v-on:keyup.enter="addTag"
-              />
+              />-->
             </div>
             <button class="ui button" type="submit" v-on:click.prevent="postItem">Submit</button>
           </div>
@@ -66,7 +71,9 @@ export default {
       return false;
     },
     addTag(e) {
-      this.item.tagList.push(e.target.value);
+      if (this.item.tagList.indexOf(e.target.value) == -1) {
+        this.item.tagList.push(e.target.value);
+      }
       e.target.value = "";
     },
     deleteItem(tag) {
