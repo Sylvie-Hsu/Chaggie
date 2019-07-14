@@ -1,5 +1,5 @@
 <template>
-  <div class="ui cards">
+  <div class="ui cards fluid">
     <div id="itemdisplay" class="ui card">
       <div class="content">
         <a class="ui yellow right ribbon label">小鸡词典</a>
@@ -136,17 +136,6 @@ export default {
               source: "weibo.com",
               content:
                 "一想到自己以前的某些言行就想把自己掐死<br/>等等 不能掐死过去的自己啊 会触发因果律武器的（？）"
-            },
-            {
-              user: "扶他柠檬茶",
-              avator:
-                "https://tvax4.sinaimg.cn/crop.24.0.1194.1194.50/6909e891ly8fem3xf2fnaj20yi0x6jtr.jpg?Expires=1562879439&amp;ssig=dNNT%2Fn82x5&amp;KID=imgbed,tva",
-              time: "今天12:00",
-              like: "1234",
-              repost: "1.3k",
-              source: "weibo.com",
-              content:
-                "一想到自己以前的某些言行就想把自己掐死<br/>等等 不能掐死过去的自己啊 会触发因果律武器的（？）"
             }
           ]
         }
@@ -173,7 +162,8 @@ export default {
 
 <style scoped>
 #itemdisplay {
-  width: 100%;
+  width: 70%;
+  left: 13%;
 }
 .tags {
   margin: 10px 0 10px 0;
