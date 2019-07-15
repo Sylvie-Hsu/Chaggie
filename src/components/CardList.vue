@@ -25,8 +25,6 @@ export default {
     this.getData();
     this.renderColumns();
     window.addEventListener("resize", this.renderColumns);
-    console.log(this.$route.params.tag);
-    console.log(this.$route.params.data);
   },
   methods: {
     getWindowSize() {

@@ -1,7 +1,8 @@
 <template>
   <div id="home" class="ui container" :style="{height:height+'px'}">
     <div id="bg-container">
-      <img id="logo" alt="logo" src="@/assets/Logo.png" />
+      <!-- <img id="logo" alt="logo" src="@/assets/Logo.png" /> -->
+      <!-- <img id="font" alt="font" src="@/assets/Font.png" /> -->
       <img id="leftDum" alt="leftDum" src="@/assets/OneDummy.png" />
       <img id="rightDum" alt="rightDum" src="@/assets/TwoDummy.png" />
       <search-bar id="searchbar"></search-bar>
@@ -29,13 +30,11 @@ export default {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: #fffbcb;
+  background: #fffcf0;
 }
-
 #bg-container img {
   position: absolute;
 }
-
 #logo {
   left: 5vh;
   right: 0;
@@ -43,8 +42,16 @@ export default {
   margin: auto;
   max-height: 40vmin;
 }
+#font {
+  width: 20%;
+  left: -7vh;
+  right: 0;
+  top: 24vh;
+  margin: auto;
+  max-height: 40vmin;
+}
 #leftDum {
-  left: 10vw;
+  left: 12vw;
   bottom: 5vh;
   margin: auto;
   max-width: 35vw;
@@ -59,7 +66,7 @@ export default {
 }
 #searchbar {
   position: absolute;
-  top: 45vmin;
+  top: 30vmin;
   left: 0;
   right: 0;
   width: max-content;

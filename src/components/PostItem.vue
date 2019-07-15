@@ -5,9 +5,11 @@
       <form class="ui form" @keypress.enter.prevent="preventKey">
         <div class="ui two column grid">
           <div class="six wide column">
-            <div class="imagedisplay">
-              <img class="ui image fluid rounded" :src="item.imgLink" />
-            </div>
+            <a href="https://zjuqsc.top/imgbed/">
+              <div class="imagedisplay">
+                <img class="ui image fluid rounded" :src="item.imgLink" />
+              </div>
+            </a>
             <div class="ui blue labels">
               <a class="ui label" v-for="tag in item.tagList" v-bind:key="tag">
                 {{tag}}
@@ -20,7 +22,6 @@
               <label>标题</label>
               <input type="text" name="title" placeholder="Title" v-model.lazy="item.title" />
             </div>
-
             <div class="field">
               <label>图片链接</label>
               <input type="text" name="imgLink" placeholder="Link" v-model.lazy="item.imgLink" />

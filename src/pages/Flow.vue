@@ -1,7 +1,9 @@
 <template>
-  <div id="flow" class="ui container">
-    <menu-bar></menu-bar>
-    <card-list></card-list>
+  <div id="flow">
+    <div class="ui container">
+      <menu-bar></menu-bar>
+      <card-list></card-list>
+    </div>
   </div>
 </template>
 
@@ -16,4 +18,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#flow {
+  background: #fffcf0;
+}
+</style>
+
 

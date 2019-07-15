@@ -11,7 +11,7 @@
         </div>
         <div class="tags">
           <a class="ui tag label blue mini" v-for="tag in mock.data.tagList" v-bind:key="tag">
-            <router-link v-bind:to="'/flow/'+tag+'/#'" style="color:white">{{tag}}</router-link>
+            <router-link v-bind:to="'/flow/'+tag+'/...'" style="color:white">{{tag}}</router-link>
           </a>
         </div>
         <!-- <div class="ui divider"></div>

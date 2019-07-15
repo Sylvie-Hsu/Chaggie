@@ -15,6 +15,17 @@
         </div>
       </div>
       <div id="menu" :class="menuClass">
+        <div v-if="inTag&&searchData" class="item">
+          {{searchData}}
+          <button
+            class="mini ui button"
+            id="searchjump"
+          >Search in #{{this.$route.params.tag}}#</button>
+        </div>
+        <div v-if="inTag&&searchData" class="item">
+          {{searchData}}
+          <button class="mini ui button" id="searchjump">Search in All</button>
+        </div>
         <div
           class="item"
           v-for="suggest in suggests"
@@ -32,6 +43,7 @@ export default {
   data() {
     return {
       searchData: "",
+      inTag: false,
       menuClass: "menu transition hidden",
       suggests: [
         {
@@ -48,6 +60,11 @@ export default {
         }
       ]
     };
+  },
+  created() {
+    if (this.$route.params.tag !== undefined) {
+      this.inTag = true;
+    }
   },
   methods: {
     search: function() {
@@ -70,6 +87,12 @@ export default {
 #search {
   justify-content: center;
   align-items: center;
+}
+#searchjump {
+  float: right;
+  height: 27px;
+  padding: 5px 10px 5px 10px;
+  font-size: 12px;
 }
 @media (min-width: 525px) {
   .prompt {
