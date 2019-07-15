@@ -2,7 +2,7 @@
   <div id="search">
     <div class="ui dropdown">
       <div class="ui category search">
-        <div class="ui icon input">
+        <div class="ui icon input transparent" style="border-bottom:1px solid rgba(0,0,0,.3)">
           <input
             class="prompt"
             type="text"
