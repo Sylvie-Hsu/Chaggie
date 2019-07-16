@@ -67,6 +67,20 @@ export default {
   methods: {
     postItem() {
       console.log(this.item);
+      this.$http
+        .post(
+          this.$apiPath + "/create",
+          {
+            name: this.item.title,
+            tag_list: this.item.tagList,
+            content: this.item.content,
+            img_url: this.item.imgLink
+          },
+          { emulateJSON: true }
+        )
+        .then(res => {
+          console.log(res.body);
+        });
     },
     preventKey() {
       return false;

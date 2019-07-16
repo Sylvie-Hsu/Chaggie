@@ -42,20 +42,22 @@ export default {
     },
     getData() {
       this.$http
-        .get("http://jsonplaceholder.typicode.com/posts")
-        .then(function(data) {
-          return data.body;
-        })
-        .then(function(data) {
-          var itemsArray = [];
-          for (let key in data) {
-            data[key].id = key;
-            itemsArray.push(data[key]);
-          }
-          this.items = itemsArray;
+        .post(
+          this.$apiPath + "/search",
+          {
+            key: this.$route.params.data,
+            tag: this.$route.params.tag
+          },
+          { emulateJSON: true }
+        )
+        .then(res => {
+          this.items = res.body.data;
           console.log(this.items);
         });
     }
+  },
+  watch: {
+    $route: "getData"
   }
 };
 </script>

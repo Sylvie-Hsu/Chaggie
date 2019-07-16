@@ -3,10 +3,10 @@
     <div class="content">
       <!-- <i class="right floated share square icon"></i> -->
       <router-link v-bind:to="'/item/'+item.id" style="color:black;font-weight:bold">
-        <div class="header"># {{this.item.title}}</div>
+        <div class="header"># {{this.item.name}}</div>
       </router-link>
       <div class="description">
-        <p>{{this.item.body}}</p>
+        <p>{{this.item.content}}</p>
       </div>
     </div>
     <div class="extra content">

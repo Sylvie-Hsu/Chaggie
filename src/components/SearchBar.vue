@@ -15,14 +15,14 @@
         </div>
       </div>
       <div id="menu" :class="menuClass">
-        <div v-if="inTag&&searchData" class="item">
+        <div v-if="inTag&&searchData" class="item" v-on:click="searchInTag">
           {{searchData}}
           <button
             class="mini ui button"
             id="searchjump"
           >Search in #{{this.$route.params.tag}}#</button>
         </div>
-        <div v-if="inTag&&searchData" class="item">
+        <div v-if="inTag&&searchData" class="item" v-on:click="search">
           {{searchData}}
           <button class="mini ui button" id="searchjump">Search in All</button>
         </div>
@@ -45,30 +45,20 @@ export default {
       searchData: "",
       inTag: false,
       menuClass: "menu transition hidden",
-      suggests: [
-        {
-          name: "test text1",
-          id: 1234
-        },
-        {
-          name: "test text2",
-          id: 1225
-        },
-        {
-          name: "test text3",
-          id: 1227
-        }
-      ]
+      suggests: []
     };
   },
   created() {
-    if (this.$route.params.tag !== undefined) {
-      this.inTag = true;
-    }
+    this.checkInTag();
   },
   methods: {
     search: function() {
       this.$router.push({ path: "/flow/" + this.searchData });
+    },
+    searchInTag: function() {
+      this.$router.push({
+        path: "/flow/" + this.$route.params.tag + "/" + this.searchData
+      });
     },
     showSuggest: function() {
       this.menuClass =
@@ -78,21 +68,32 @@ export default {
     },
     completeSearch: function(id) {
       this.$router.push({ path: "/item/" + id });
+    },
+    checkInTag: function() {
+      console.log(this.$route.params.tag);
+      if (this.$route.params.tag !== undefined) {
+        this.inTag = true;
+      } else {
+        this.inTag = false;
+      }
     }
   },
   watch: {
+    $route: "checkInTag",
     searchData: function(val) {
       console.log(val);
       this.$http
-        .post("http://101.132.135.132/api/v3/recommend", {
-          input: this.searchData,
-          limit: 10
-        })
-        .then(function(data) {
-          return data.body;
-        })
-        .then(function(data) {
-          console.log(data);
+        .post(
+          this.$apiPath + "/recommend",
+          {
+            input: this.searchData,
+            limit: 10
+          },
+          { emulateJSON: true }
+        )
+        .then(res => {
+          console.log(res.body);
+          this.suggests = res.body.data;
         });
     }
   }
