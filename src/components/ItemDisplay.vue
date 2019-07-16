@@ -18,6 +18,7 @@
         <a class="ui yellow right ribbon label">小鸡词典</a>-->
       </div>
     </div>
+
     <div id="itemdisplay" class="ui card">
       <div class="content">
         <a class="ui pink right ribbon label">Bilibili</a>
@@ -81,15 +82,39 @@
         </div>
       </div>
     </div>
+    <div id="itemdisplay" class="ui card">
+      <div class="content">
+        <a class="ui purple right ribbon label">词云</a>
+        <div class="header"># {{this.mock.data.name}}</div>
+        <div class="ui divider"></div>
+        <wordcloud nameKey="tagName" valueKey="hot" :data="mock.data.wordlist" :color="myColor" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import wordcloud from "vue-wordcloud";
+
 export default {
+  components: {
+    wordcloud
+  },
   data() {
     return {
       id: this.$route.params.id,
       item: {},
+      myColor: [
+        "#4E4F97",
+        "#8F77B5",
+        "#6A4C9C",
+        "#8A6BBE",
+        "#66327C",
+        "#4A225D",
+        "#77428D",
+        "#986DB2",
+        "#B28FCE"
+      ],
       mock: {
         code: 0,
         data: {
@@ -135,6 +160,18 @@ export default {
               content:
                 "一想到自己以前的某些言行就想把自己掐死<br/>等等 不能掐死过去的自己啊 会触发因果律武器的（？）"
             }
+          ],
+          wordlist: [
+            { tagName: "徐霄雯", hot: 56 },
+            { tagName: "徐霄雯2", hot: 5 },
+            { tagName: "徐霄雯3", hot: 6 },
+            { tagName: "霄雯许", hot: 6 },
+            { tagName: "徐雯", hot: 56 },
+            { tagName: "徐霄", hot: 16 },
+            { tagName: "霄雯", hot: 46 },
+            { tagName: "徐徐雯", hot: 26 },
+            { tagName: "徐雯雯", hot: 46 },
+            { tagName: "霄雯雯", hot: 16 }
           ]
         }
       }

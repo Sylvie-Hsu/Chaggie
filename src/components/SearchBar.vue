@@ -79,6 +79,22 @@ export default {
     completeSearch: function(id) {
       this.$router.push({ path: "/item/" + id });
     }
+  },
+  watch: {
+    searchData: function(val) {
+      console.log(val);
+      this.$http
+        .post("http://101.132.135.132/api/v3/recommend", {
+          input: this.searchData,
+          limit: 10
+        })
+        .then(function(data) {
+          return data.body;
+        })
+        .then(function(data) {
+          console.log(data);
+        });
+    }
   }
 };
 </script>
