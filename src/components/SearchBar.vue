@@ -12,8 +12,8 @@
             @blur="showSuggest"
             v-on:keyup.enter="search"
           />
-          <i class="search icon"></i>
         </div>
+        <i class="search icon" v-on:click="search"></i>
       </div>
       <div id="menu" :class="menuClass">
         <div v-if="inTag&&searchData" class="item" v-on:click="searchInTag">
@@ -117,7 +117,7 @@ export default {
 }
 @media (min-width: 525px) {
   .prompt {
-    width: 350px;
+    width: 330px;
     height: 36.5px;
   }
   #menu {

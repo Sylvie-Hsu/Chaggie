@@ -9,11 +9,26 @@
         <div class="description font">
           <p>{{this.item.content}}</p>
         </div>
+        <img
+          class="ui centered fluid rounded image"
+          :src="item.image"
+          style="padding:2% 10% 2% 10%"
+        />
         <div class="tags">
           <router-link v-for="tag in item.tagList" v-bind:key="tag" v-bind:to="'/flow/'+tag+'/...'">
             <a class="ui tag label Teal">{{tag}}</a>
           </router-link>
         </div>
+      </div>
+      <div class="extra content">
+        <span class="left floated like" v-on:click="addLikes">
+          <i :class="like"></i>
+          {{this.item.like}} Likes
+        </span>
+        <span class="right floated paw">
+          <i class="eye icon"></i>
+          {{this.item.view}} Views
+        </span>
       </div>
     </div>
     <div v-if="this.item.videoList.length!=0" id="itemdisplay" class="ui card">
@@ -105,6 +120,8 @@ export default {
     return {
       item: {},
       ifLoad: false,
+      like: "like icon",
+      liked: false,
       myColor: [
         "#4E4F97",
         "#8F77B5",
@@ -142,8 +159,8 @@ export default {
           this.$apiPath + "/entry",
           {
             id: this.$route.params.id,
-            video_limit: 5,
-            img_limit: 4,
+            video_limit: 3,
+            img_limit: 8,
             weibo_limit: 5
           },
           { emulateJSON: true }
@@ -154,6 +171,12 @@ export default {
           console.log(this.item);
           this.ifLoad = true;
         });
+    },
+    addLikes() {
+      this.item.like =
+        this.liked == false ? this.item.like + 1 : this.item.like - 1;
+      this.liked = this.liked ? false : true;
+      this.like = this.like === "like icon" ? "like red icon" : "like icon";
     }
   },
   watch: {
