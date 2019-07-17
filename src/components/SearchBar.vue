@@ -8,7 +8,8 @@
             type="text"
             placeholder="Search items..."
             v-model="searchData"
-            v-on:click="showSuggest"
+            @focus="showSuggest"
+            @blur="showSuggest"
             v-on:keyup.enter="search"
           />
           <i class="search icon"></i>
@@ -39,6 +40,7 @@
 </template>
 
 <script>
+import { setTimeout } from "timers";
 export default {
   data() {
     return {
@@ -61,10 +63,12 @@ export default {
       });
     },
     showSuggest: function() {
-      this.menuClass =
-        this.menuClass == "menu transition visible"
-          ? "menu transition hidden"
-          : "menu transition visible";
+      setTimeout(() => {
+        this.menuClass =
+          this.menuClass == "menu transition visible"
+            ? "menu transition hidden"
+            : "menu transition visible";
+      }, 1000);
     },
     completeSearch: function(id) {
       this.$router.push({ path: "/item/" + id });

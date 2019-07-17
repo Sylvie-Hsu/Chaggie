@@ -5,6 +5,11 @@
         <i class="large home icon"></i>
       </a>
     </router-link>
+    <router-link to="/flow" exact>
+      <a class="item">
+        <i class="large th list icon"></i>
+      </a>
+    </router-link>
     <router-link to="/post">
       <a class="item">
         <i class="large edit icon"></i>

@@ -6,6 +6,7 @@
 
 <script>
 import carditem from "./CardItem";
+import { setTimeout } from "timers";
 
 export default {
   data() {
@@ -48,7 +49,7 @@ export default {
             key: this.$route.params.data,
             tag: "",
             page_number: 0,
-            page_size: 100,
+            page_size: 50,
             order_by: "view",
             time_begin: "",
             time_end: ""
@@ -59,6 +60,26 @@ export default {
           this.items = res.body.data;
           console.log(this.items);
         });
+      setTimeout(() => {
+        this.$http
+          .post(
+            this.$apiPath + "/search",
+            {
+              key: this.$route.params.data,
+              tag: "",
+              page_number: 0,
+              page_size: 1000,
+              order_by: "view",
+              time_begin: "",
+              time_end: ""
+            },
+            { emulateJSON: true }
+          )
+          .then(res => {
+            this.items = res.body.data;
+            console.log(this.items);
+          });
+      }, 300);
     }
   },
   watch: {

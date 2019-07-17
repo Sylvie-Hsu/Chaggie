@@ -31,8 +31,8 @@ export default {
 
 <style scoped>
 .font {
-  font-size: 16px;
-  line-height: 150%;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
 }
 </style>
 

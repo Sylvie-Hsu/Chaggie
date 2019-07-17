@@ -6,13 +6,13 @@
         <div class="header"># {{this.item.name}}</div>
         <div class="ui divider"></div>
         <div class="meta">{{this.item.time}}</div>
-        <div class="description">
+        <div class="description font">
           <p>{{this.item.content}}</p>
         </div>
         <div class="tags">
-          <a class="ui tag label blue mini" v-for="tag in item.tagList" v-bind:key="tag">
-            <router-link v-bind:to="'/flow/'+tag+'/...'" style="color:white">{{tag}}</router-link>
-          </a>
+          <router-link v-for="tag in item.tagList" v-bind:key="tag" v-bind:to="'/flow/'+tag+'/...'">
+            <a class="ui tag label Teal">{{tag}}</a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@
                   <a>{{weibo.user}}</a>
                   <div class="date">{{weibo.time}}</div>
                 </div>
-                <div class="extra text">{{weibo.content}}</div>
+                <div class="font extra text">{{weibo.content}}</div>
                 <div class="meta">
                   <a class="like">
                     <i class="like icon"></i>
@@ -174,5 +174,9 @@ export default {
   width: 100%;
   height: 500px;
   border-radius: 8px;
+}
+.font {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
 }
 </style>
