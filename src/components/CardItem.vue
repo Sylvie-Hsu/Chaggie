@@ -3,10 +3,11 @@
     <div class="content">
       <!-- <i class="right floated share square icon"></i> -->
       <router-link v-bind:to="'/item/'+item.id" style="color:black;font-weight:bold">
-        <div class="header"># {{this.item.name}}</div>
+        <h3 class="header"># {{this.item.name}}</h3>
+        <div class="ui divider"></div>
       </router-link>
       <div class="description">
-        <p>{{this.item.content}}</p>
+        <p class="font">{{this.item.content}}</p>
       </div>
     </div>
     <div class="extra content">
@@ -27,3 +28,11 @@ export default {
   props: ["item"]
 };
 </script>
+
+<style scoped>
+.font {
+  font-size: 16px;
+  line-height: 150%;
+}
+</style>
+

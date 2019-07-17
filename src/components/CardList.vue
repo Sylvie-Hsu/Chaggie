@@ -46,7 +46,12 @@ export default {
           this.$apiPath + "/search",
           {
             key: this.$route.params.data,
-            tag: this.$route.params.tag
+            tag: "",
+            page_number: 0,
+            page_size: 100,
+            order_by: "view",
+            time_begin: "",
+            time_end: ""
           },
           { emulateJSON: true }
         )
