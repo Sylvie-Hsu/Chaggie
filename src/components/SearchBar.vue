@@ -2,7 +2,7 @@
   <div id="search">
     <div class="ui dropdown">
       <div class="ui category search">
-        <div class="ui icon input transparent" style="border-bottom:1px solid rgba(0,0,0,.3)">
+        <div class="ui icon input transparent" style="border-bottom:1px solid rgba(85,103,113,0.3)">
           <input
             class="prompt"
             type="text"
@@ -13,7 +13,7 @@
             v-on:keyup.enter="search"
           />
         </div>
-        <i class="search icon" v-on:click="search"></i>
+        <i class="search icon" style="color:#556771" v-on:click="search"></i>
       </div>
       <div id="menu" :class="menuClass">
         <div v-if="inTag&&searchData" class="item" v-on:click="searchInTag">

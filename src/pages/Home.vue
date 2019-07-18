@@ -3,6 +3,7 @@
     <div id="bg-container">
       <!-- <img id="logo" alt="logo" src="@/assets/Logo.png" /> -->
       <!-- <img id="font" alt="font" src="@/assets/Font.png" /> -->
+      <img id="font" alt="font" src="@/assets/White.png" />
       <img id="leftDum" alt="leftDum" src="@/assets/OneDummy.png" />
       <img id="rightDum" alt="rightDum" src="@/assets/TwoDummy.png" />
       <search-bar id="searchbar"></search-bar>
@@ -43,10 +44,10 @@ export default {
   max-height: 40vmin;
 }
 #font {
-  width: 20%;
-  left: -7vh;
+  width: 28%;
+  left: -2vh;
   right: 0;
-  top: 24vh;
+  top: 15vh;
   margin: auto;
   max-height: 40vmin;
 }
@@ -66,7 +67,7 @@ export default {
 }
 #searchbar {
   position: absolute;
-  top: 30vmin;
+  top: 35vmin;
   left: 0;
   right: 0;
   width: max-content;
