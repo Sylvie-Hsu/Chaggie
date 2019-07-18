@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="row">
+      <div class="ui label">以下是 #{{this.$route.params.data}}{{this.$route.params.tag}}# 的搜索结果</div>
       <sui-dropdown
         button
         class="icon mini"
@@ -11,6 +12,7 @@
         search
         text="选择排序方式"
         v-model="current"
+        style="padding:7.8px;margin:2px;font-size:11px"
       />
       <a class="ui label" v-for="tag in searchTags" v-bind:key="tag">
         {{tag}}
@@ -43,6 +45,22 @@
         </sui-modal-actions>
       </sui-modal>
     </div>
+    <div v-if="ifImgLoad" class="ui card fluid" id="itemdisplay">
+      <div class="content">
+        <div class="header">
+          <i class="quote left icon" style="color:#fcd001"></i>相关图片
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui small images">
+          <img
+            v-for="image in imgLists"
+            v-bind:key="image"
+            :src="'https://meme-1259654642.cos.ap-chengdu.myqcloud.com/data/'+image"
+          />
+        </div>
+      </div>
+    </div>
+
     <div id="cardlist" :style="{columnCount:columnCount }">
       <card-item class="carditem" v-for="item in items" v-bind:key="item.id" :item="item"></card-item>
     </div>
@@ -66,11 +84,13 @@ export default {
       options: [
         { key: "view", text: "最多浏览", value: "view" },
         { key: "like", text: "最多喜欢", value: "like" },
-        { key: "name", text: "名称最相关", value: "name" }
+        { key: "time", text: "最近更新", value: "time" }
       ],
       searchTags: [],
       open: false,
-      imgLink: "https://semantic-ui.com/images/avatar2/large/kristy.png"
+      imgLink: "https://semantic-ui.com/images/avatar2/large/kristy.png",
+      ifImgLoad: false,
+      imgLists: []
     };
   },
   components: {
@@ -92,12 +112,22 @@ export default {
           this.$apiPath + "/imgsearch",
           {
             url: this.imgLink,
-            n: 10
+            n: 21
           },
           { emulateJSON: true }
         )
         .then(res => {
-          console.log(res.body);
+          console.log(res.body.data);
+          this.items = res.body.data.entryList;
+          this.imgLists = res.body.data.imgList;
+          this.imgLists = this.imgLists.map(item => {
+            var index = item.lastIndexOf("/");
+            var url =
+              item.substring(0, index) +
+              item.substring(index).replace(/%/g, "%25");
+            return url;
+          });
+          this.ifImgLoad = true;
         });
     },
     getWindowSize() {

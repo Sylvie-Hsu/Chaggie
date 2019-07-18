@@ -213,6 +213,20 @@ export default {
       })();
     },
     addLikes() {
+      if (this.liked == false) {
+        this.$http
+          .post(
+            this.$apiPath + "/vote",
+            {
+              id: this.item.id,
+              like: true
+            },
+            { emulateJSON: true }
+          )
+          .then(res => {
+            console.log(res.body.data);
+          });
+      }
       this.item.like =
         this.liked == false ? this.item.like + 1 : this.item.like - 1;
       this.liked = this.liked ? false : true;
