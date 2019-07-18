@@ -1,9 +1,12 @@
 <template>
-  <div class="ui card fluid">
+  <div class="ui card fluid shadow">
     <div class="content">
       <!-- <i class="right floated share square icon"></i> -->
       <router-link v-bind:to="'/item/'+item.id" style="color:black;font-weight:bold">
-        <h3 class="header"># {{this.item.name}}</h3>
+        <h3 class="header">
+          <i class="quote left icon" style="color:#fcd001"></i>
+          {{this.item.name}}
+        </h3>
         <div class="ui divider"></div>
       </router-link>
       <div class="description">
@@ -45,6 +48,9 @@ export default {
 </script>
 
 <style scoped>
+.shadow:hover {
+  box-shadow: 0 0 10px #666666;
+}
 .font {
   font-size: 1.2rem;
   line-height: 1.8rem;

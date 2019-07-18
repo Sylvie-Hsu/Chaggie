@@ -52,7 +52,7 @@ export default {
             tag: "",
             page_number: 0,
             page_size: 25,
-            order_by: "",
+            order_by: "[]",
             time_begin: "",
             time_end: ""
           },
@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 #cardlist {
-  column-gap: 0.5vw;
+  column-gap: 1vw;
   padding-top: 0.5vw;
 }
 .carditem {

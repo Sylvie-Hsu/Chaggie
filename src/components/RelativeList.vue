@@ -41,7 +41,7 @@ export default {
     getWindowSize() {
       this.windowSize.height = window.innerHeight;
       this.windowSize.width = window.innerWidth;
-      console.log(this.windowSize);
+      //   console.log(this.windowSize);
     },
     renderColumns() {
       this.getWindowSize();
@@ -52,25 +52,27 @@ export default {
       this.columnCount = columns > maxColumn ? maxColumn : columns;
     },
     getData() {
-      this.$http
-        .post(
-          this.$apiPath + "/search",
-          {
-            key: this.$route.params.data,
-            tag: "",
-            page_number: 0,
-            page_size: 1000,
-            order_by: "",
-            time_begin: "",
-            time_end: ""
-          },
-          { emulateJSON: true }
-        )
-        .then(res => {
-          this.items = res.body.data;
-          console.log(this.items);
-          this.ifLoaded = true;
-        });
+      setTimeout(() => {
+        this.$http
+          .post(
+            this.$apiPath + "/search",
+            {
+              key: this.$route.params.data,
+              tag: "",
+              page_number: 0,
+              page_size: 500,
+              order_by: "[]",
+              time_begin: "",
+              time_end: ""
+            },
+            { emulateJSON: true }
+          )
+          .then(res => {
+            this.items = res.body.data;
+            console.log(this.items);
+            this.ifLoaded = true;
+          });
+      }, 50);
     }
   },
   watch: {
@@ -81,7 +83,7 @@ export default {
 
 <style scoped>
 #cardlist {
-  column-gap: 0.5vw;
+  column-gap: 1vw;
   padding-top: 0.5vw;
 }
 .carditem {

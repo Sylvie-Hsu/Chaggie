@@ -3,7 +3,10 @@
     <div id="itemdisplay" class="ui card">
       <div class="content">
         <a class="ui yellow right ribbon label">小鸡词典</a>
-        <div class="header"># {{this.item.name}}</div>
+        <div class="header">
+          <i class="quote left icon" style="color:#fcd001"></i>
+          {{this.item.name}}
+        </div>
         <div class="ui divider"></div>
         <div class="meta">{{this.item.time}}</div>
         <div class="description font">
@@ -12,7 +15,7 @@
         <img
           class="ui centered fluid rounded image"
           :src="item.image"
-          style="padding:2% 10% 2% 10%"
+          style="padding:2% 10% 2% 10%;max-height:600px"
         />
         <div class="tags">
           <router-link v-for="tag in item.tagList" v-bind:key="tag" v-bind:to="'/flow/'+tag+'/...'">
@@ -34,7 +37,10 @@
     <div v-if="this.item.videoList.length!=0" id="itemdisplay" class="ui card">
       <div class="content">
         <a class="ui pink right ribbon label">Bilibili</a>
-        <div class="header"># {{this.item.name}}</div>
+        <div class="header">
+          <i class="quote left icon" style="color:#fcd001"></i>
+          {{this.item.name}}
+        </div>
         <div class="videos" v-for="video in item.videoList" v-bind:key="video.video_id">
           <div class="ui divider"></div>
           <h4>{{video.title}}</h4>
@@ -53,7 +59,10 @@
     <div v-if="this.item.imageList.length!=0" id="itemdisplay" class="ui card">
       <div class="content">
         <a class="ui blue right ribbon label">Google</a>
-        <div class="header"># {{this.item.name}}</div>
+        <div class="header">
+          <i class="quote left icon" style="color:#fcd001"></i>
+          {{this.item.name}}
+        </div>
         <div class="ui divider"></div>
         <div class="ui images">
           <img
@@ -68,7 +77,10 @@
     <div v-if="this.item.weiboList.length!=0" id="itemdisplay" class="ui card">
       <div class="content">
         <a class="ui orange right ribbon label">微博</a>
-        <div class="header"># {{this.item.name}}</div>
+        <div class="header">
+          <i class="quote left icon" style="color:#fcd001"></i>
+          {{this.item.name}}
+        </div>
         <div class="ui divider"></div>
         <div class="ui images">
           <div class="ui feed">
@@ -82,10 +94,26 @@
                   <div class="date">{{weibo.time}}</div>
                 </div>
                 <div class="font extra text">{{weibo.content}}</div>
+                <!-- <div class="extra images">
+                  <a>
+                    <img src="https://semantic-ui.com/images/wireframe/image.png" />
+                  </a>
+                  <a>
+                    <img src="https://semantic-ui.com/images/wireframe/image.png" />
+                  </a>
+                </div>-->
                 <div class="meta">
                   <a class="like">
                     <i class="like icon"></i>
                     {{weibo.like}}
+                  </a>
+                  <a class="share">
+                    <i class="share square icon"></i>
+                    {{weibo.repost}}
+                  </a>
+                  <a class="comment">
+                    <i class="comment alternate icon"></i>
+                    {{weibo.comment}}
                   </a>
                 </div>
               </div>
@@ -97,11 +125,14 @@
     <div id="itemdisplay" class="ui card">
       <div class="content">
         <a class="ui purple right ribbon label">词云</a>
-        <div class="header"># {{this.item.name}}</div>
+        <div class="header">
+          <i class="quote left icon" style="color:#fcd001"></i>
+          {{this.item.name}}
+        </div>
         <div class="ui divider"></div>
         <!-- <wordcloud nameKey="tagName" valueKey="hot" :data="item.wordlist" :color="myColor" /> -->
         <img
-          class="ui small rounded image"
+          class="ui fluid rounded image"
           :src="'https://meme-1259654642.cos.ap-chengdu.myqcloud.com/'+this.item.wordCloud"
         />
       </div>
@@ -160,7 +191,7 @@ export default {
           {
             id: this.$route.params.id,
             video_limit: 3,
-            img_limit: 8,
+            img_limit: 4,
             weibo_limit: 5
           },
           { emulateJSON: true }
