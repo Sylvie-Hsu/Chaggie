@@ -60,7 +60,7 @@ export default {
               key: this.$route.params.data,
               tag: "",
               page_number: 0,
-              page_size: 500,
+              page_size: 300,
               order_by: "[]",
               time_begin: "",
               time_end: ""

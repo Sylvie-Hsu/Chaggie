@@ -42,13 +42,6 @@
                   <input type="text" name="tag" placeholder="Enter tags" v-on:keyup.enter="addTag" />
                   <a class="ui tag label">标签</a>
                 </div>
-                <!-- <label>标签</label>
-              <input
-                type="text"
-                name="tag"
-                placeholder="Tags (Press enter)"
-                v-on:keyup.enter="addTag"
-                />-->
               </div>
               <button class="ui button" type="submit" v-on:click.prevent="postItem">Submit</button>
             </div>

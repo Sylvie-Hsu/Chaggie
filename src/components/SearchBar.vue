@@ -68,7 +68,7 @@ export default {
           this.menuClass == "menu transition visible"
             ? "menu transition hidden"
             : "menu transition visible";
-      }, 100);
+      }, 500);
       this.$http
         .post(
           this.$apiPath + "/recommend",
