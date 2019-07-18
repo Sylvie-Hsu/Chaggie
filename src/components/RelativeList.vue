@@ -72,7 +72,7 @@ export default {
             console.log(this.items);
             this.ifLoaded = true;
           });
-      }, 50);
+      }, 500);
     }
   },
   watch: {

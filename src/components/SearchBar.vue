@@ -68,7 +68,20 @@ export default {
           this.menuClass == "menu transition visible"
             ? "menu transition hidden"
             : "menu transition visible";
-      }, 1000);
+      }, 100);
+      this.$http
+        .post(
+          this.$apiPath + "/recommend",
+          {
+            input: this.searchData,
+            limit: 10
+          },
+          { emulateJSON: true }
+        )
+        .then(res => {
+          console.log(res.body);
+          this.suggests = res.body.data;
+        });
     },
     completeSearch: function(id) {
       this.$router.push({ path: "/item/" + id });

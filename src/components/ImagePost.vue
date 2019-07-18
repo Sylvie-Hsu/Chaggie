@@ -4,10 +4,10 @@
       <div id="upload-btn-parent" :style="{backgroundImage:'url(' + tmpUrl + ')'}">
         <input type="file" id="upload-btn" @change="selectImage" />
       </div>
-      <a id="copy-btn" @click.prevent="uploadAndCopy"></a>
+      <!-- <a id="copy-btn" @click.prevent="uploadAndCopy"></a>
       <div v-if="imageUrl!==''" id="copy-links">
         <input aria-label="result-link" type="text" :value="imageUrl" />
-      </div>
+      </div>-->
     </div>
   </div>
 </template>
