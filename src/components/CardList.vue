@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="row">
-      <div class="ui label">以下是 #{{this.$route.params.data}}{{this.$route.params.tag}}# 的搜索结果</div>
+      <div
+        class="ui label"
+        style="background:#E0E0E0"
+      >以下是 #{{this.$route.params.data}}{{this.$route.params.tag}}# 的搜索结果</div>
       <sui-dropdown
         button
         class="icon mini"
@@ -12,7 +15,7 @@
         search
         text="选择排序方式"
         v-model="current"
-        style="padding:7.8px;margin:2px;font-size:11px"
+        style="padding:7.5px;margin:2px;font-size:11px"
       />
       <a class="ui label" v-for="tag in searchTags" v-bind:key="tag">
         {{tag}}
